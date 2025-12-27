@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Job Domain Predictor</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #1a237e;
+            font-size: 26px;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 5px rgba(25,118,210,0.4);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: linear-gradient(135deg, #1976d2, #42a5f5);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            border-radius: 8px;
+            color: #1b5e20;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <div class="header">
+        <div class="ai-badge">🤖 AI Resume Analyzer</div>
+        <h2>Job Domain & Sub-domain Prediction</h2>
+        <p>Our AI analyzes your skills to predict the most suitable career domain</p>
+    </div>
+
+    <form action="/predict" method="post">
+        <label for="top_skills">Enter Your Skills</label>
+        <textarea
+            name="top_skills"
+            rows="4"
+            placeholder="e.g. Python, Machine Learning, Deep Learning, SQL, NLP"
+            required></textarea>
+
+        <input type="submit" value="Analyze with AI">
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+
+    <div class="footer-note">
+        Powered by Machine Learning & NLP
+    </div>
+
+</div>
+
+</body>
+</html>
